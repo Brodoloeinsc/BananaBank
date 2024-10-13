@@ -43,7 +43,9 @@ defmodule BananaBank.MixProject do
       {:dns_cluster, "~> 0.1.1"},
       {:bandit, "~> 1.5"},
       {:pbkdf2_elixir, "~> 2.0"},
-      {:tesla, "~> 1.11"}
+      {:tesla, "~> 1.11"},
+      {:bypass, "~> 2.1", only: :test},
+      {:mox, "~> 1.0", only: :test}
     ]
   end
 

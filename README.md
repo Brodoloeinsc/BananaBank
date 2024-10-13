@@ -29,3 +29,5 @@ I used in this project some features and techs:
  - PBKDF2 to encrypt the Password
  - API ViaCEP
  - Tesla to consume APIs
+ - Bypass
+ - Mox
