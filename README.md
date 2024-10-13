@@ -27,3 +27,5 @@ I used in this project some features and techs:
  - Ecto
  - GitHub Repository Comeonin
  - PBKDF2 to encrypt the Password
+ - API ViaCEP
+ - Tesla to consume APIs
