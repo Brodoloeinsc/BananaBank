@@ -1,30 +1,43 @@
 defmodule BananaBankWeb.UsersController do
   use BananaBankWeb, :controller
 
-  alias BananaBank.Users.Create
+  alias BananaBank.Users
+  alias Users.User
+  alias BananaBankWeb.FallbackController
+
+  # Caso de erro no with o elixir joga para o Fallback Controller que trata os erros
+  action_fallback FallbackController
 
   def create(conn, params) do
-    # conn
-    # |> put_status(:ok)
-    # |> json(%{message: "Bem vindo ao BananaBank"})
-
-    params
-    |> Create.call()
-    |> handle_response(conn)
-
+    with {:ok, %User{} = user} <- Users.create(params) do
+      conn
+      |> put_status(:created)
+      |> render(:create, user: user)
+    end
   end
 
-  defp handle_response({:ok, user}, conn) do
-    conn
-    |> put_status(:created)
-    |> render(:create, user: user)
+  def delete(conn, %{"id"=>id}) do
+    with {:ok, %User{} = user} <- Users.delete(id) do
+      conn
+      |> put_status(:ok)
+      |> render(:delete, user: user)
+    end
   end
 
-  defp handle_response({:error, changeset}, conn) do
-    conn
-    |> put_status(:bad_request)
-    |> put_view(json: BananaBankWeb.ErrorJSON)
-    |> render(:error, changeset: changeset)
+  def show(conn, %{"id"=>id}) do
+    with {:ok, %User{} = user} <- Users.get(id) do
+      conn
+      |> put_status(:ok)
+      |> render(:get, user: user)
+    end
+  end
+
+  def update(conn, params) do
+    with {:ok, %User{} = user} <- Users.update(params) do
+      conn
+      |> put_status(:ok)
+      |> render(:update, user: user)
+    end
   end
 
 end
