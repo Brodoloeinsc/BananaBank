@@ -47,6 +47,7 @@ defmodule BananaBank.Users.User do
     |> validate_length(:name, min: 3)
     |> validate_format(:email, ~r/@/)
     |> validate_length(:cep, is: 8)
+    |> validate_length(:password, min: 7)
   end
 
   defp add_password_hash(%Ecto.Changeset{valid?: true, changes: %{password: password}} = changeset) do
