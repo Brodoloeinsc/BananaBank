@@ -10,6 +10,8 @@ defmodule BananaBankWeb.UsersJSON do
 
   def get(%{user: user}), do: %{data: data(user)}
 
+  def update(%{user: user}), do: %{message: "User updated successfully", data: data(user)}
+
 
 
   # Private Functions
