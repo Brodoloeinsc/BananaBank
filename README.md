@@ -25,3 +25,5 @@ I used in this project some features and techs:
  - Postgresql
  - Phoenix
  - Ecto
+ - GitHub Repository Comeonin
+ - PBKDF2 to encrypt the Password
